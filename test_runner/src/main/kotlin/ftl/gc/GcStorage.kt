@@ -79,11 +79,11 @@ object GcStorage {
         }
     }
 
-    fun uploadCiJUnitXml(testResult: JUnitTestResult, args: IArgs, fileName: String) {
+    fun uploadReportResult(testResult: String, args: IArgs, fileName: String) {
         if (args.resultsBucket.isBlank() || args.resultsDir.isBlank()) return
         upload(
             file = fileName,
-            fileBytes = testResult.xmlToString().toByteArray(),
+            fileBytes = testResult.toByteArray(),
             rootGcsBucket = args.resultsBucket,
             runGcsPath = args.resultsDir
         )
